@@ -1,10 +1,11 @@
 import React from 'react'
 import { Link } from "react-router-dom"
+import GenRandColor from '../components/GenRandColor'
 
 const ColorsPage = () => {
   return (
-    <div className='header w-full h-screen flex justify-center items-center text-center'>
-        <div className='title'>
+    <div className='bg w-full h-screen flex justify-center items-center flex-col text-center'>
+        <div className='body'>
             <Link to='/'>
               <div className='text-5xl mt-2 mb-4'>
                   <span className='text-red-500'>R</span>
@@ -19,8 +20,8 @@ const ColorsPage = () => {
                   <span className='text-pink-500'>e</span>
                   <span className='text-indigo-500'>r</span>
               </div>
-            </Link>
-            <h1 className='text-xl'>Generate a random color in many formats</h1> 
+            </Link> 
+            <GenRandColor />
         </div>
     </div>
   )

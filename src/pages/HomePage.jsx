@@ -3,8 +3,8 @@ import { Link } from "react-router-dom"
 
 const HomePage = () => {
   return (
-    <div className='header w-full h-screen flex justify-center items-center text-center'>
-        <div className='title'>
+    <div className='bg w-full h-screen flex justify-center items-center text-center'>
+        <div className='body'>
             <h1 className='text-xl'>Welcome to the</h1> 
             <div className='text-5xl mt-2 mb-4'>
                 <span className='text-red-500'>R</span>
@@ -19,8 +19,11 @@ const HomePage = () => {
                 <span className='text-pink-500'>e</span>
                 <span className='text-indigo-500'>r</span>
             </div>
-            <p className='mt-2 mb-4 text-lg'>
+            <p className='mt-2 mb-4 text-lg font-medium'>
               Colorizer app remade with <span className='text-cyan-500 text-xl'>React</span>
+            </p>
+            <p className='mt-2 mb-4 text-lg font-medium'>
+              Made by <a className='text-cyan-700 underline hover:text-cyan-500 transition ease-in-out' href='https://github.com/Remania' target='_blank' rel='noreferrer'>Remania</a>
             </p>
             <Link to='/colors'>
               <button className='bg-red-400 hover:bg-red-500 transition ease-in-out text-white p-2 rounded w-full'>
