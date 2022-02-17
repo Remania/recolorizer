@@ -1,22 +1,38 @@
 import React, { useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { store_color } from '../store/features/colorSlice'
+
 import genRandNumberByArray from "../helpers/genRandNumberByArray"
 import genRandFloat from "../helpers/genRandFloat"
 import genRandNumber from "../helpers/genRandNumber"
+
 import { FiCopy } from "react-icons/fi"
+import { AiOutlinePlus } from "react-icons/ai"
+
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ReactTooltip from 'react-tooltip';
 
+import { CopyToClipboard } from 'react-copy-to-clipboard'
+
 const GenRandColor = () => {
+  const colors = useSelector((state) => state.colors)
+  const dispatch = useDispatch()
+
   const [colorValue, setColorValue] = useState("rgb(255,255,255)")
   const [colorType, setColorType] = useState("RGB")
 
+  const saveColor = () => {
+    dispatch(store_color(colorValue))
+    toast(`${colorValue.toUpperCase()} saved!!!`)
+  }
+  
+
+  //* GEN RGB COLOR
   const rgb = []
   for (let i = 0; i < 256; i++) {
     rgb.push(i)
   }
-
-  //* GEN RGB COLOR
   const genRgbColor = (e) => {
     let rgbColor = "rgb"
     let rgbItems = []
@@ -106,27 +122,35 @@ const GenRandColor = () => {
     setColorValue(hslaColor)
   }
 
-  //* HANDLE COPY
-  const handleCopy = () => {
-    const copy_input = document.getElementById("copy_input")
-    copy_input.select()
-    document.execCommand("copy")
-    toast(`${colorValue.toUpperCase()} copied!!!`)
+  //* COPY COLOR
+  const copyColor = (color) => {
+    toast(`${color.toUpperCase()} copied!!!`)
   }
 
   return (
     <div className='container mx-auto p-4 mt-4'>
         <div className='flex justify-between items-center'>
             <h4>Color:</h4>
-            <input type='text' readOnly className='text-right font-medium focus:outline-none selection:bg-transparent' id="copy_input" value={colorValue} onChange={() => setColorValue(colorValue)} />
+            <span className='font-medium'>{colorValue}</span>
         </div>
         <div style={{ background: `${colorValue}` }} className='w-full h-24 my-2 transition ease-in-out relative rounded-lg'>
-            <button
-            data-tip="Copy"
-            type='button' 
-            onClick={handleCopy} 
-            className='copy top-0 left-0 absolute p-2 text-white rounded-lg hover:bg-gray-700 active:scale-75 transition ease-in-out'>
+            <CopyToClipboard
+              text={colorValue}
+              onCopy={() => copyColor(colorValue)}
+            >
+              <button
+              data-tip="Copy"
+              type='button' 
+              className='copy top-0 left-0 absolute p-2 text-white rounded-lg hover:bg-gray-700 active:scale-75 transition ease-in-out'>
                 <FiCopy />
+              </button>
+            </CopyToClipboard>
+            <button
+            data-tip="Save"
+            type='button' 
+            onClick={saveColor} 
+            className='copy top-0 right-0 absolute p-2 text-white rounded-lg hover:bg-gray-700 active:scale-75 transition ease-in-out'>
+              <AiOutlinePlus />
             </button>
         </div>
         <h3>Using <span className='font-medium'>{colorType}</span></h3>
@@ -148,7 +172,7 @@ const GenRandColor = () => {
             className='btn-primary' type='button'>HSLA</button>
         </div>
         <ToastContainer
-            pauseOnHover={false}
+          pauseOnHover={false}
         />
         <ReactTooltip 
           place='bottom'

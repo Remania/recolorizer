@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from "react-router-dom"
 import GenRandColor from '../components/GenRandColor'
+import { AiFillStar } from "react-icons/ai"
 
 const ColorsPage = () => {
   return (
@@ -20,7 +21,13 @@ const ColorsPage = () => {
                   <span className='text-pink-500'>e</span>
                   <span className='text-indigo-500'>r</span>
               </div>
-            </Link> 
+            </Link>
+            <Link to="/colors/favorites">
+              <button type='button' className='flex justify-center items-center gap-2 btn-primary w-full'>
+                <AiFillStar />
+                See Favorite Colors
+              </button>
+            </Link>
             <GenRandColor />
         </div>
     </div>

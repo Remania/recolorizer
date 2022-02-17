@@ -17,3 +17,17 @@
       @apply bg-red-400 hover:bg-red-500 text-white font-bold py-2 px-4 rounded transition ease-in-out;
     }
 }
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-border-radius: 10px;
+    background-color:white;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background:gray; 
+}
