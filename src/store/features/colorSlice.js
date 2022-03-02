@@ -25,6 +25,6 @@ export const colorSlice = createSlice({
     }
 })
 
-export const { set_colors, store_color } = colorSlice.actions
+export const { store_color } = colorSlice.actions
 
 export default colorSlice.reducer

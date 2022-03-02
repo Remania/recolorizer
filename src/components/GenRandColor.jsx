@@ -141,7 +141,7 @@ const GenRandColor = () => {
               <button
               data-tip="Copy"
               type='button' 
-              className='copy top-0 left-0 absolute p-2 text-white rounded-lg hover:bg-gray-700 active:scale-75 transition ease-in-out'>
+              className='copy top-0 left-0 absolute p-2 text-white rounded-lg hover:bg-gray-700 transition ease-in-out'>
                 <FiCopy />
               </button>
             </CopyToClipboard>
@@ -149,7 +149,7 @@ const GenRandColor = () => {
             data-tip="Save"
             type='button' 
             onClick={saveColor} 
-            className='copy top-0 right-0 absolute p-2 text-white rounded-lg hover:bg-gray-700 active:scale-75 transition ease-in-out'>
+            className='copy top-0 right-0 absolute p-2 text-white rounded-lg hover:bg-gray-700 transition ease-in-out'>
               <AiOutlinePlus />
             </button>
         </div>
